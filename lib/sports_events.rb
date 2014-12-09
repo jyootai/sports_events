@@ -4,6 +4,12 @@ require 'sports_events/version'
 
 module SportsEvents
   Uri = "http://www.zhibo8.cc"
+  class Output
+    attr_accessor :data
+    def info
+      puts data
+    end
+  end
   class << self
     def query(date)
       doc = Nokogiri::HTML(open(Uri))
@@ -28,13 +34,14 @@ module SportsEvents
            when today+15   then 17 
            else 0
            end
+      output = SportsEvents::Output.new
       if id == 0
-        error = "对不起，暂无赛事数据提供"
-        return error
+        message = "对不起，暂无赛事数据提供"
       else
-        info = doc.xpath("//div[@class='box']")[id].text
-        return info
+        message = doc.xpath("//div[@class='box']")[id].text
       end
+      output.send("data=",message)
+      return output
     end
   end
 end
