@@ -16,6 +16,19 @@ Or install it yourself as:
 
     $ gem install sports_events
 
+## Usage
+
+```ruby
+irb> require "sports_events"
+true
+irb> detail = SportsEvents.query("12")
+irb> detail.info
+23:00 英超第16轮 切尔西 - 赫尔城 上海体育    乐视    PPTV 手机看直播  比分直播
+23:00 英超第16轮 莱切斯特城 - 曼城 乐视    PPTV 手机看直播  比分直播 
+23:00 英超第16轮 伯恩利 - 南安普顿 等待更新 手机看直播  比分直播
+            ……
+            ……
+```
 
 ## Contributing
 
