@@ -5,9 +5,41 @@ require 'sports_events/version'
 module SportsEvents
   Uri = "http://www.zhibo8.cc"
   class Output
-    attr_accessor :data
+    attr_accessor :datas
     def info
-      puts data
+      datas.each do |line|
+        puts line.text
+      end
+    end
+
+    def xijia
+      datas.each do |line|    	
+        puts line.text if line.text.include?("西甲")
+      end
+    end
+    		
+    def yingchao
+      datas.each do |line|    	
+        puts line.text if line.text.include?("英超")
+      end
+    end
+    
+    def dejia
+      datas.each do |line|    	
+        puts line.text if line.text.include?("德甲")
+      end
+    end
+  
+    def fajia
+      datas.each do |line|    	
+        puts line.text if line.text.include?("法甲")
+      end
+    end
+    
+    def yijia
+      datas.each do |line|    	
+        puts line.text if line.text.include?("意甲")
+      end
     end
   end
   class << self
@@ -38,9 +70,10 @@ module SportsEvents
       if id == 0
         message = "对不起，暂无赛事数据提供"
       else
-        message = doc.xpath("//div[@class='box']")[id].text
+        message = doc.xpath("//div[@class='box']")[id]
       end
-      output.send("data=",message)
+      lines = message.css("li")
+      output.send("datas=",lines)
       return output
     end
   end
