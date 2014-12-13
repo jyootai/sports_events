@@ -13,32 +13,29 @@ module SportsEvents
     end
 
     def xijia
-      datas.each do |line|    	
-        puts line.text if line.text.include?("西甲")
-      end
+      output "西甲"    	
     end
     		
     def yingchao
-      datas.each do |line|    	
-        puts line.text if line.text.include?("英超")
-      end
+      output "英超"    	
     end
     
     def dejia
-      datas.each do |line|    	
-        puts line.text if line.text.include?("德甲")
-      end
+      output "德甲"    	
     end
   
     def fajia
-      datas.each do |line|    	
-        puts line.text if line.text.include?("法甲")
-      end
+      output "法甲"    	
     end
     
     def yijia
-      datas.each do |line|    	
-        puts line.text if line.text.include?("意甲")
+      output "意甲"    	
+    end
+    
+    private
+    def output arg
+      datas.each do |line|
+        puts line.text if line.text.include?(arg)    	
       end
     end
   end
