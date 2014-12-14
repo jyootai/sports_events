@@ -35,7 +35,7 @@ module SportsEvents
     private
     def output arg
       datas.each do |line|
-        content = line.text.gsub(%r{[美女陪你聊天竞彩足球投注]},'')
+        content = line.text.gsub(%r{美女陪你聊天},'').gsub(%r{竞彩足球投注},'').gsub(%r{手机看直播},'').gsub(%r{比分直播},'').gsub(%r{文字直播},'')
         puts content if content.include?(arg)    	
       end
     end
