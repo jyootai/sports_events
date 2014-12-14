@@ -35,7 +35,8 @@ module SportsEvents
     private
     def output arg
       datas.each do |line|
-        puts line.text if line.text.include?(arg)    	
+        content = line.text.gsub(%r{美女陪你聊天},'')
+        puts content if content.include?(arg)    	
       end
     end
   end
