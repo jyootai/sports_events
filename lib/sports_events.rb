@@ -11,6 +11,19 @@ module SportsEvents
         puts line.text
       end
     end
+    
+    def link
+      datas.each do |line|	
+        remove_content = line.css('a').text
+        puts line.text.gsub(/[#{remove_content}]/,'')
+        len = line.css('a/@href').length
+        for i in 0...len
+          detail_link = line.css('a/@href')[i]
+          detail_content = line.css('a')[i].text
+          puts "#{detail_content}[#{detail_link}]"
+        end
+      end
+    end
 
     def xijia
       output "西甲"    	
