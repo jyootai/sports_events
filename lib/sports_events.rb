@@ -25,30 +25,18 @@ module SportsEvents
       end
     end
 
-    def xijia
-      output "西甲"    	
-    end
-    		
-    def yingchao
-      output "英超"    	
-    end
-    
-    def dejia
-      output "德甲"    	
-    end
-  
-    def fajia
-      output "法甲"    	
-    end
-    
-    def yijia
-      output "意甲"    	
+    def method_missing(method_name, *arg)
+      output "西甲" if method_name == :xijia
+      output "英超" if method_name == :yingchao
+      output "德甲" if method_name == :dejia
+      output "法甲" if method_name == :fajia
+      output "意甲" if method_name == :yijia
     end
     
     private
     def output arg
       datas.each do |line|
-        content = line.text.gsub(%r{美女陪你聊天},'').gsub(%r{竞彩足球投注},'').gsub(%r{手机看直播},'').gsub(%r{比分直播},'').gsub(%r{文字直播},'')
+        content = line.text.gsub(%r{美女陪你聊天},'').gsub(%r{竞彩足球投注},'').gsub(%r{手机看直播},'').gsub(%r{比分直播},'').gsub(%r{文字直播},'').gsub(%r{美女视频直播},'')
         puts content if content.include?(arg)    	
       end
     end
